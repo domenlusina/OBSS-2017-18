@@ -1,0 +1,33 @@
+[ d, entropyTE, entropyTL, entropyPE, entropyPL ] = getAllSampEn(11);
+[ d, te, tl, pe, pl ] = getRecClasses;
+
+dTE = getDate( d, te );
+dTL = getDate( d, tl );
+dPE = getDate( d, pe );
+dPL = getDate( d, pl );
+N = 4;
+figure();
+plot(dTE,entropyTE(:,N),'o', 'MarkerFaceColor','r'); hold on;
+plot(dTL,entropyTL(:,N),'o','MarkerFaceColor','r'); hold on;
+plot(dPE,entropyPE(:,N),'o', 'MarkerFaceColor','b'); hold on;
+plot(dPL,entropyPL(:,N),'o', 'MarkerFaceColor','b'); hold on;
+line([26,26],[0,1.1],'Color','black','LineStyle','--'); hold on;
+
+[p1,p2,p3,p4,p5,p6] = getP( entropyTE, entropyTL, entropyPE, entropyPL, N )
+
+
+
+[ d, entropyTE2, entropyTL2, entropyPE2, entropyPL2 ] = getAllSampEn(11);
+
+figure();
+plot(dTE,entropyTE2(:,N),'o', 'MarkerFaceColor','r'); hold on;
+plot(dTL,entropyTL2(:,N),'o','MarkerFaceColor','r'); hold on;
+plot(dPE,entropyPE2(:,N),'o', 'MarkerFaceColor','b'); hold on;
+plot(dPL,entropyPL2(:,N),'o', 'MarkerFaceColor','b'); hold on;
+line([26,26],[0,1.1],'Color','black','LineStyle','...'); hold on;
+line([0,26],[0,1.1],'Color','black','LineStyle','--'); hold on;
+line([26,36],[0,1.1],'Color','black','LineStyle','--'); hold on;
+line([26,26],[0,1.1],'Color','black'); hold on;
+line([26,26],[0,1.1],'Color','black'); hold on;
+
+[p12,p22,p32,p42,p52,p62] = getP( entropyTE2, entropyTL2, entropyPE2, entropyPL2, N )

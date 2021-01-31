@@ -1,0 +1,21 @@
+Geoffrey Fairchild of Los Alamos National Laboratory contributed several
+fixes to version 1.1 of sampen.m and cross-sampen.m, which have been
+incorporated in version 1.1-1:
+
+* In sampen.m, the line
+    if ~exist('m')|isempty(m),m=5;end
+  should be
+    if ~exist('M')|isempty(M),M=5;end
+  Geoffrey notes, "The difference is that the M needs to be capitalized.
+  MATLAB allows this, but it does give a warning.  I discovered it when
+  running SampEn using Octave which threw an error instead of a warning."
+
+* The same error exists in version 1.1 of cross-sampen.m, and the same
+  correction is applied here.
+
+* In cross_sampen.m, the function declaration (the first line in the file)
+    function [e,A,B]=cross_sampen(x,y,M,r);
+  should include a fifth input argument (sflag, as noted in the function's
+  help comments immediately below the declaration), and it should not end
+  with a semicolon;  the correct declaration is
+    function [e,A,B]=cross_sampen(x,y,M,r,sflag)

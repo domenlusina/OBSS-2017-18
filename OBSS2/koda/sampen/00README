@@ -1,0 +1,29 @@
+Where is 'cmatches.m'?
+
+If you download 'sampen.m' only, you will encounter this error when you try
+to run it:
+
+   ??? Undefined function or method 'cmatches' for input arguments of type
+    'double'.
+   Error in ==> sampen at 51
+   [match,R]=cmatches(y,n,r);
+
+There is no 'cmatches.m', because this function is provided by C code that
+has been compiled into 'cmatches.dll'.  If you are using Matlab on Windows,
+you can download and use
+    http://physionet.org/physiotools/sampen/matlab/1.1/cmatches.dll
+This solution is only usable on compatible 32-bit versions of Windows.
+
+Alternatively, you can use a pure Matlab version of cmatches by downloading
+    http://physionet.org/physiotools/sampen/matlab/1.1/sampenc.m
+which will work on all platforms.  After downloading 'sampenc.m', run 'sampen'
+but set its fifth input argument (cflag) to 0;  this will cause it to bypass
+cmatches and use sampenc instead.  Read 'sampen.m' to see how this works.
+
+A third method is to download, compile, and run
+    http://physionet.org/physiotools/sampen/c/sampen.c
+If you do this, also download the other files in
+    http://physionet.org/physiotools/sampen/c/
+which include a 'Makefile' to simplify compilation and testing.
+The C code is significantly faster than the Matlab code, and it works on all
+platforms.  'cmatches.dll' is based on the code in sampen.c.
